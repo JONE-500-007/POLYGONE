@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://bjdf01jo6a5pd"]
+
+[ext_resource type="PackedScene" uid="uid://fi8m7pvwn6ls" path="res://model/character/cube01.fbx" id="1_x8mhf"]
+[ext_resource type="Shader" uid="uid://kci8vuqeo5xy" path="res://shaders/my_outline.gdshader" id="2_bow2h"]
+[ext_resource type="Script" uid="uid://clik8o22tiavy" path="res://scripts/character_select.gd" id="2_jgus3"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_uxcyu"]
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fa52j"]
+render_priority = 0
+shader = ExtResource("2_bow2h")
+shader_parameter/normal_threshold = 0.2
+shader_parameter/line_highlight = 0.4
+shader_parameter/same_surface_depth = 0.2
+shader_parameter/edge_threshold = 0.25
+shader_parameter/line_darkness = 0.9
+
+[sub_resource type="Environment" id="Environment_wp5od"]
+ambient_light_source = 2
+ambient_light_color = Color(0.5019608, 0.5019608, 0.5019608, 1)
+ambient_light_energy = 0.5
+
+[node name="CharacterSelect" type="Control" unique_id=388228183]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_jgus3")
+
+[node name="PreviewContainer" type="SubViewportContainer" parent="." unique_id=2086837880]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+stretch = true
+stretch_shrink = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="PreviewViewport" type="SubViewport" parent="PreviewContainer" unique_id=911827292]
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(320, 180)
+render_target_update_mode = 4
+
+[node name="PreviewWorld" type="Node3D" parent="PreviewContainer/PreviewViewport" unique_id=284373717]
+
+[node name="Camera3D" type="Camera3D" parent="PreviewContainer/PreviewViewport/PreviewWorld" unique_id=1894331944]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 4)
+h_offset = 2.0
+projection = 1
+size = 5.0
+
+[node name="PostProcess" type="MeshInstance3D" parent="PreviewContainer/PreviewViewport/PreviewWorld/Camera3D" unique_id=1985023208]
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_uxcyu")
+surface_material_override/0 = SubResource("ShaderMaterial_fa52j")
+
+[node name="ModelPivot" type="Node3D" parent="PreviewContainer/PreviewViewport/PreviewWorld" unique_id=1784085347]
+
+[node name="cube01" parent="PreviewContainer/PreviewViewport/PreviewWorld/ModelPivot" unique_id=1589379831 instance=ExtResource("1_x8mhf")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="PreviewContainer/PreviewViewport/PreviewWorld" unique_id=2110917523]
+transform = Transform3D(0.8660254, -0.35355338, 0.35355338, 0, 0.70710677, 0.70710677, -0.5, -0.6123724, 0.6123724, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="PreviewContainer/PreviewViewport/PreviewWorld" unique_id=662380868]
+environment = SubResource("Environment_wp5od")
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=815848163]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Columns" type="HBoxContainer" parent="Margin" unique_id=1081183307]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Spacer" type="Control" parent="Margin/Columns" unique_id=2061155603]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MenuPanel" type="VBoxContainer" parent="Margin/Columns" unique_id=931566736]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="TitleLabel" type="Label" parent="Margin/Columns/MenuPanel" unique_id=1379306674]
+layout_mode = 2
+text = "Select Character"
+horizontal_alignment = 1
+
+[node name="SlotList" type="HBoxContainer" parent="Margin/Columns/MenuPanel" unique_id=419021194]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="CubeSlot" type="Button" parent="Margin/Columns/MenuPanel/SlotList" unique_id=862201073]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+text = "Cube"
+
+[node name="SphereSlot" type="Button" parent="Margin/Columns/MenuPanel/SlotList" unique_id=928110091]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+text = "Sphere"
+
+[node name="PyramidSlot" type="Button" parent="Margin/Columns/MenuPanel/SlotList" unique_id=1364337740]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+text = "Pyramid"
+
+[node name="DescriptionLabel" type="Label" parent="Margin/Columns/MenuPanel" unique_id=812651157]
+layout_mode = 2
+size_flags_vertical = 3
+text = "this just for test some thing"
+autowrap_mode = 2
+
+[node name="BottomButtons" type="HBoxContainer" parent="Margin/Columns/MenuPanel" unique_id=2033420921]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="Margin/Columns/MenuPanel/BottomButtons" unique_id=934885619]
+custom_minimum_size = Vector2(200, 52)
+layout_mode = 2
+text = "Play"
+
+[node name="BackButton" type="Button" parent="Margin/Columns/MenuPanel/BottomButtons" unique_id=1570078277]
+custom_minimum_size = Vector2(200, 52)
+layout_mode = 2
+text = "Back"

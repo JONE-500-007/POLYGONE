@@ -4,15 +4,23 @@ render_mode unshaded;
 uniform sampler2D depth_tex : hint_depth_texture, filter_nearest;
 uniform sampler2D screen_tex : hint_screen_texture, filter_nearest;
 uniform sampler2D normal_tex : hint_normal_roughness_texture, filter_nearest;
+// Inner edges: how different two surface directions must be to count as an edge
+// Lower = more highlights. Higher = only sharp corners
 uniform float normal_threshold = 0.2;
+// How bright the highlight on convex corners is. 0 = no highlight
 uniform float line_highlight = 0.4;
+// Two pixels closer than this (in meters) count as the same surface
+// Lower = less highlight leaking onto the floor next to objects
 uniform float same_surface_depth = 0.2;
 
 vec3 get_normal(vec2 uv) {
 	return texture(normal_tex, uv).rgb * 2.0 - 1.0;
 }
 
+// Outer edges: how much deeper a neighbor pixel must be to draw a dark line
+// Lower = more lines. Higher = only big edges
 uniform float edge_threshold = 0.25;
+// How dark the outline is. 1 = pure black, 0 = no outline
 uniform float line_darkness = 0.9;
 
 float get_depth(vec2 uv, mat4 inv_proj) {
@@ -41,7 +49,7 @@ void fragment() {
 		float neighbor = get_depth(uv, INV_PROJECTION_MATRIX);
 		diff += clamp(neighbor - depth, 0.0, 1.0);
 
-		// เทียบ normal เฉพาะเพื่อนบ้านที่อยู่ผิวเดียวกัน (ลึกใกล้เคียงกัน)
+
 		float same_surface = step(abs(neighbor - depth), same_surface_depth);
 		vec3 n = get_normal(uv);
 		float convex = step(0.0, dot(normal - n, vec3(1.0)));

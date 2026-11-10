@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://c1kievrsb20ka"]
+
+[ext_resource type="Script" uid="uid://c5tgwkwpt6p3j" path="res://scripts/character_data.gd" id="1_3edqm"]
+[ext_resource type="PackedScene" uid="uid://cats4daw3xg4j" path="res://model/character/sphere01.fbx" id="1_o0iyh"]
+
+[resource]
+script = ExtResource("1_3edqm")
+id = "sphere"
+display_name = "Sphere"
+description = "Fires bouncing balls"
+model_scene = ExtResource("1_o0iyh")
+metadata/_custom_type_script = "uid://c5tgwkwpt6p3j"

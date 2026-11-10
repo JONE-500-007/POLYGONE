@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://dkgnkcx7iqj31"]
+
+[ext_resource type="Script" uid="uid://b5xktquijryt4" path="res://scenes/main_menu.gd" id="1_l6cm7"]
+
+[node name="MainMenu" type="Control" unique_id=600053697]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l6cm7")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1253305218]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16924527, 0.1692453, 0.16924527, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1809350634]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainPanel" type="VBoxContainer" parent="CenterContainer" unique_id=2051548318]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="CenterContainer/MainPanel" unique_id=754377088]
+layout_mode = 2
+text = "POLYGONE"
+horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="CenterContainer/MainPanel" unique_id=1657985995]
+custom_minimum_size = Vector2(240, 48)
+layout_mode = 2
+text = "Play"
+
+[node name="SettingsButton" type="Button" parent="CenterContainer/MainPanel" unique_id=1841855219]
+custom_minimum_size = Vector2(240, 48)
+layout_mode = 2
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/MainPanel" unique_id=643968078]
+custom_minimum_size = Vector2(240, 48)
+layout_mode = 2
+text = "Quit"
+
+[node name="PlayPanel" type="VBoxContainer" parent="CenterContainer" unique_id=1235862626]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="CenterContainer/PlayPanel" unique_id=234321604]
+layout_mode = 2
+text = "Select Mode"
+horizontal_alignment = 1
+
+[node name="SoloButton" type="Button" parent="CenterContainer/PlayPanel" unique_id=1141114792]
+custom_minimum_size = Vector2(240, 48)
+layout_mode = 2
+text = "Solo"
+
+[node name="CoopButton" type="Button" parent="CenterContainer/PlayPanel" unique_id=1889138616]
+custom_minimum_size = Vector2(240, 48)
+layout_mode = 2
+text = "Co-op"
+
+[node name="PlayBackButton" type="Button" parent="CenterContainer/PlayPanel" unique_id=1271936155]
+custom_minimum_size = Vector2(240, 48)
+layout_mode = 2
+text = "Back"
+
+[node name="CoopPanel" type="VBoxContainer" parent="CenterContainer" unique_id=1728800878]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CoopTitle" type="Label" parent="CenterContainer/CoopPanel" unique_id=1035937446]
+layout_mode = 2
+text = "Co-op Mode"
+horizontal_alignment = 1
+
+[node name="HostButton" type="Button" parent="CenterContainer/CoopPanel" unique_id=948235982]
+custom_minimum_size = Vector2(240, 48)
+layout_mode = 2
+text = "Create Room"
+
+[node name="JoinMenuButton" type="Button" parent="CenterContainer/CoopPanel" unique_id=2037542166]
+custom_minimum_size = Vector2(240, 48)
+layout_mode = 2
+text = "Join Other Room"
+
+[node name="CoopBackButton" type="Button" parent="CenterContainer/CoopPanel" unique_id=1414273966]
+custom_minimum_size = Vector2(240, 48)
+layout_mode = 2
+text = "Back"
+
+[node name="JoinPanel" type="VBoxContainer" parent="CenterContainer" unique_id=1375502300]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="JoinTitle" type="Label" parent="CenterContainer/JoinPanel" unique_id=1578834161]
+layout_mode = 2
+text = "Join Other Room"
+horizontal_alignment = 1
+
+[node name="CodeEdit" type="LineEdit" parent="CenterContainer/JoinPanel" unique_id=121821641]
+custom_minimum_size = Vector2(240, 48)
+layout_mode = 2
+placeholder_text = "Enter room code"
+alignment = 1
+
+[node name="ConfirmJoinButton" type="Button" parent="CenterContainer/JoinPanel" unique_id=1501875635]
+custom_minimum_size = Vector2(240, 48)
+layout_mode = 2
+text = "Join"
+
+[node name="JoinBackButton" type="Button" parent="CenterContainer/JoinPanel" unique_id=1041165415]
+custom_minimum_size = Vector2(240, 48)
+layout_mode = 2
+text = "Back"

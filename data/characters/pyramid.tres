@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://ck1kfpp46j0ws"]
+
+[ext_resource type="PackedScene" uid="uid://bjcg3qjye60gb" path="res://model/character/syramid01.fbx" id="1_j4al0"]
+[ext_resource type="Script" uid="uid://c5tgwkwpt6p3j" path="res://scripts/character_data.gd" id="1_rpghw"]
+
+[resource]
+script = ExtResource("1_rpghw")
+id = "pyramid"
+display_name = "Pyramid"
+description = "Fires lasers. Lower damage"
+model_scene = ExtResource("1_j4al0")
+metadata/_custom_type_script = "uid://c5tgwkwpt6p3j"

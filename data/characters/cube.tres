@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://4wfjmpuqqk72"]
+
+[ext_resource type="Script" uid="uid://c5tgwkwpt6p3j" path="res://scripts/character_data.gd" id="1_g56qi"]
+[ext_resource type="PackedScene" uid="uid://fi8m7pvwn6ls" path="res://model/character/cube01.fbx" id="1_hpjnt"]
+
+[resource]
+script = ExtResource("1_g56qi")
+id = "cube"
+display_name = "Cube"
+description = "Fires big projectiles"
+model_scene = ExtResource("1_hpjnt")
+metadata/_custom_type_script = "uid://c5tgwkwpt6p3j"
