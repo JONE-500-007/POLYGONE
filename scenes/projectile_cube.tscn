@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://d4ui3c6fxm1j"]
+
+[ext_resource type="Script" uid="uid://cnvun7kgreruq" path="res://scripts/projectile.gd" id="1_ys75d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k56px"]
+diffuse_mode = 3
+albedo_color = Color(0.96514493, 1, 0.6428884, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wp5od"]
+material = SubResource("StandardMaterial3D_k56px")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wp5od"]
+radius = 0.45
+
+[node name="Projectile" type="Area3D" unique_id=1509201745]
+collision_layer = 0
+collision_mask = 5
+script = ExtResource("1_ys75d")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=962944421]
+mesh = SubResource("BoxMesh_wp5od")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=381978514]
+shape = SubResource("SphereShape3D_wp5od")

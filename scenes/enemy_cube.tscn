@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dlkpxwwimdmfb"]
+
+[ext_resource type="Script" uid="uid://cg0sethlo0pyp" path="res://scripts/enemy_cube.gd" id="1_4o6ld"]
+[ext_resource type="Script" uid="uid://duauhlgbw0ol2" path="res://scripts/health.gd" id="2_q8g4r"]
+[ext_resource type="PackedScene" uid="uid://b3764h8nkt1rv" path="res://scenes/health_bar_3d.tscn" id="3_7lac2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wp5od"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k56px"]
+diffuse_mode = 3
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sugp2"]
+radius = 0.6
+
+[node name="Enemy_Cube" type="CharacterBody3D" unique_id=1991575644]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_4o6ld")
+contact_distance = 2.0
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=2044316760]
+mesh = SubResource("BoxMesh_wp5od")
+surface_material_override/0 = SubResource("StandardMaterial3D_k56px")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=668774177]
+shape = SubResource("CapsuleShape3D_sugp2")
+
+[node name="Feet" type="Node3D" parent="." unique_id=1578923002]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Feet" unique_id=329796775]
+
+[node name="Health" type="Node" parent="." unique_id=137300036]
+script = ExtResource("2_q8g4r")
+max_health = 20.0
+
+[node name="HealthBar3D" parent="." unique_id=1253422284 instance=ExtResource("3_7lac2")]
+hide_when_full = true

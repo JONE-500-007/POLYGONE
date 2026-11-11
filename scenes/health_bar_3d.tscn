@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://b3764h8nkt1rv"]
+
+[ext_resource type="Script" uid="uid://nsi5gvwj0fx2" path="res://scripts/health_bar_3d.gd" id="1_8v4ab"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2lx3m"]
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.14901961, 0.14901961, 0.14901961, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_2lx3m"]
+material = SubResource("StandardMaterial3D_2lx3m")
+size = Vector2(2, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8v4ab"]
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_wp5od"]
+material = SubResource("StandardMaterial3D_8v4ab")
+size = Vector2(2, 0.25)
+
+[node name="HealthBar3D" type="Node3D" unique_id=1253422284]
+script = ExtResource("1_8v4ab")
+
+[node name="Back" type="MeshInstance3D" parent="." unique_id=1718092372]
+mesh = SubResource("QuadMesh_2lx3m")
+
+[node name="Fill" type="MeshInstance3D" parent="." unique_id=643125770]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.01)
+sorting_offset = 1.0
+mesh = SubResource("QuadMesh_wp5od")
