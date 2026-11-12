@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://dxua1mgm5s4w"]
+
+[ext_resource type="Texture2D" uid="uid://duu2ejcsyiv4q" path="res://weapon_icon/cube_01_weapon.png" id="1_atylh"]
+[ext_resource type="Script" uid="uid://dw20crcqtifyb" path="res://scripts/card_data.gd" id="2_g4nex"]
+
+[resource]
+script = ExtResource("2_g4nex")
+display_name = "Test Weapon C"
+description = "this for test weapon C"
+icon = ExtResource("1_atylh")
+metadata/_custom_type_script = "uid://dw20crcqtifyb"

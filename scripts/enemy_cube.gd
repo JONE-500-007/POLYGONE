@@ -15,6 +15,7 @@ extends CharacterBody3D
 # Random body height range (meters).
 @export var min_height := 1.5
 @export var max_height := 3.5
+@export var orb_scene: PackedScene
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -33,13 +34,24 @@ var _attack_cooldown := 0.0
 
 func _ready() -> void:
 	add_to_group("enemy")
-	health.died.connect(queue_free)
+	#health.died.connect(queue_free)
+	health.died.connect(_on_died)
 	# Spread path requests out so a big wave does not ask for paths on the same frame.
 	_repath_timer = randf() * repath_interval
 	_randomize_height()
 	# The navigation map needs one physics frame before it can answer path queries.
 	await get_tree().physics_frame
 	_nav_ready = true
+	
+func _on_died() -> void:
+	if orb_scene:
+		var orb := orb_scene.instantiate() as Node3D
+		# Drop at the enemy's feet (floor level), a little above the ground.
+		orb.position = Vector3(global_position.x, feet.global_position.y + 0.6, global_position.z)
+		# "deferred": the enemy dies in the middle of a physics step (a projectile hit it),
+		# and Godot does not allow adding a collision area at that moment.
+		get_parent().add_child.call_deferred(orb)
+	queue_free()
 
 
 func _randomize_height() -> void:

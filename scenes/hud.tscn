@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://1u0tsgefsgqs"]
+
+[ext_resource type="Script" uid="uid://ta08r55o474h" path="res://scripts/hud.gd" id="1_ahhtf"]
+[ext_resource type="PackedScene" uid="uid://7lv7t4rl0jti" path="res://scenes/hud_slot.tscn" id="2_oo0fn"]
+
+[node name="Hud" type="CanvasLayer" unique_id=1145189805]
+script = ExtResource("1_ahhtf")
+slot_scene = ExtResource("2_oo0fn")
+
+[node name="Root" type="Control" parent="." unique_id=453177191]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Slots" type="MarginContainer" parent="Root" unique_id=30590360]
+layout_mode = 1
+offset_bottom = 4.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="Root/Slots" unique_id=1777527576]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="WeaponRow" type="HBoxContainer" parent="Root/Slots/VBox" unique_id=1174022126]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="PassiveRow" type="HBoxContainer" parent="Root/Slots/VBox" unique_id=715168773]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ExpBar" type="ProgressBar" parent="Root" unique_id=1907352148]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="LevelLabel" type="Label" parent="Root" unique_id=2077409505]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_top = 10.0
+offset_right = -26.0
+offset_bottom = 33.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 32
+text = "Level 0"
+horizontal_alignment = 2

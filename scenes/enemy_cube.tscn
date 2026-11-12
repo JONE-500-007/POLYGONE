@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dlkpxwwimdmfb"]
 
 [ext_resource type="Script" uid="uid://cg0sethlo0pyp" path="res://scripts/enemy_cube.gd" id="1_4o6ld"]
+[ext_resource type="PackedScene" uid="uid://ccth0lyv1ru6y" path="res://scenes/exp_orb.tscn" id="2_jn626"]
 [ext_resource type="Script" uid="uid://duauhlgbw0ol2" path="res://scripts/health.gd" id="2_q8g4r"]
 [ext_resource type="PackedScene" uid="uid://b3764h8nkt1rv" path="res://scenes/health_bar_3d.tscn" id="3_7lac2"]
 
@@ -17,6 +18,7 @@ collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_4o6ld")
 contact_distance = 2.0
+orb_scene = ExtResource("2_jn626")
 
 [node name="Body" type="MeshInstance3D" parent="." unique_id=2044316760]
 mesh = SubResource("BoxMesh_wp5od")

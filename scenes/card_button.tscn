@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://blmqx3tjhxnew"]
+
+[ext_resource type="Script" uid="uid://brr13t5bf5xmi" path="res://scripts/card_button.gd" id="1_5inow"]
+
+[node name="CardButton" type="Button" unique_id=971196946]
+custom_minimum_size = Vector2(220, 300)
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_5inow")
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=1090795007]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="IconRect" type="TextureRect" parent="VBox" unique_id=1838469922]
+texture_filter = 1
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="VBox" unique_id=561158163]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="DescLabel" type="Label" parent="VBox" unique_id=74972417]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_alignment = 1
+autowrap_mode = 3

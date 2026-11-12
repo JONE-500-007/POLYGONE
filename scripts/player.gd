@@ -13,17 +13,28 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var health: Health = $Health
 
 var is_dead := false
+# Weapons the player currently has (cards), so the HUD and level-ups know about them.
+var weapons: Array[CardData] = []
 
 
 func _ready() -> void:
 	add_to_group("player")
 	health.changed.connect(_on_health_changed)
 	health.died.connect(_on_died)
-	var data := GameState.selected_character
+	#var data := GameState.selected_character
+	var data: CharacterData = GameState.selected_character
 	if data == null:
 		# Fallback so the game scene also works when run directly.
 		data = load("res://data/characters/cube.tres") as CharacterData
 	model_pivot.add_child(data.model_scene.instantiate())
+	equip_weapon(data.starting_weapon)
+	
+func equip_weapon(card: CardData) -> void:
+	if card == null or card.weapon_scene == null:
+		return  # this class has no weapon (yet)
+	weapons.append(card)
+	# weapon.gd looks at get_parent() as Player, so it must be a direct child.
+	add_child(card.weapon_scene.instantiate())
 	
 func _on_health_changed(current: float, maximum: float) -> void:
 	print("Player HP: %d / %d" % [current, maximum])

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://cdk7uiegdty0d"]
+
+[ext_resource type="Texture2D" uid="uid://duu2ejcsyiv4q" path="res://weapon_icon/cube_01_weapon.png" id="1_wyuhb"]
+[ext_resource type="Script" uid="uid://dw20crcqtifyb" path="res://scripts/card_data.gd" id="2_o6rr5"]
+[ext_resource type="PackedScene" uid="uid://cs77fepf0xeql" path="res://scenes/weapon_cube.tscn" id="3_o6rr5"]
+
+[resource]
+script = ExtResource("2_o6rr5")
+display_name = "Weapon A"
+description = "Fires big projectiles"
+icon = ExtResource("1_wyuhb")
+weapon_scene = ExtResource("3_o6rr5")
+metadata/_custom_type_script = "uid://dw20crcqtifyb"

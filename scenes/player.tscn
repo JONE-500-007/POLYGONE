@@ -3,8 +3,7 @@
 [ext_resource type="Script" uid="uid://q0pc1h2hysn2" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://duauhlgbw0ol2" path="res://scripts/health.gd" id="2_g2els"]
 [ext_resource type="PackedScene" uid="uid://b3764h8nkt1rv" path="res://scenes/health_bar_3d.tscn" id="3_qhqgy"]
-[ext_resource type="Script" uid="uid://bpg3yqhub4qus" path="res://scripts/weapon.gd" id="4_dqkch"]
-[ext_resource type="PackedScene" uid="uid://d4ui3c6fxm1j" path="res://scenes/projectile_cube.tscn" id="5_qlg0r"]
+[ext_resource type="Script" uid="uid://b5ks86ugab5db" path="res://scripts/experience.gd" id="4_dqkch"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o5qli"]
 size = Vector3(2, 2, 2)
@@ -24,6 +23,5 @@ script = ExtResource("2_g2els")
 [node name="HealthBar3D" parent="." unique_id=1253422284 instance=ExtResource("3_qhqgy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="Weapon" type="Node3D" parent="." unique_id=81562568]
+[node name="Experience" type="Node" parent="." unique_id=1756961638]
 script = ExtResource("4_dqkch")
-projectile_scene = ExtResource("5_qlg0r")

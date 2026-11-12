@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://dsl2o1bqdn7fk"]
+
+[ext_resource type="Texture2D" uid="uid://5klayfd1yj2w" path="res://passive_icon/cube_01_passive.png" id="1_b6bc5"]
+[ext_resource type="Script" uid="uid://dw20crcqtifyb" path="res://scripts/card_data.gd" id="2_1vyfu"]
+
+[resource]
+script = ExtResource("2_1vyfu")
+display_name = "Test Passive E"
+description = "this for test passive E"
+icon = ExtResource("1_b6bc5")
+kind = 1
+metadata/_custom_type_script = "uid://dw20crcqtifyb"

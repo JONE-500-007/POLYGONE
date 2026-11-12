@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://dfy0kvsvnki83" path="res://scenes/player.tscn" id="2_0wfyh"]
 [ext_resource type="Script" uid="uid://bnd5i5h7t0sw2" path="res://scripts/enemy_spawner.gd" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://dlkpxwwimdmfb" path="res://scenes/enemy_cube.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://1u0tsgefsgqs" path="res://scenes/hud.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://bkpvn647a7b00" path="res://scenes/level_up_panel.tscn" id="6_tefeu"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_s1fef"]
 flip_faces = true
@@ -168,3 +170,7 @@ collision_layer = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PixelContainer/SubViewport/World/NavigationRegion3D/Crate5/StaticBody3D" unique_id=520158416]
 shape = SubResource("BoxShape3D_tipki")
+
+[node name="Hud" parent="." unique_id=1145189805 instance=ExtResource("5_tbgi4")]
+
+[node name="LevelUpPanel" parent="." unique_id=188613578 instance=ExtResource("6_tefeu")]

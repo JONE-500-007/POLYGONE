@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c5tgwkwpt6p3j" path="res://scripts/character_data.gd" id="1_g56qi"]
 [ext_resource type="PackedScene" uid="uid://fi8m7pvwn6ls" path="res://model/character/cube01.fbx" id="1_hpjnt"]
+[ext_resource type="Resource" uid="uid://cdk7uiegdty0d" path="res://data/cards/weapon_a.tres" id="3_4jmj2"]
 
 [resource]
 script = ExtResource("1_g56qi")
@@ -9,4 +10,5 @@ id = "cube"
 display_name = "Cube"
 description = "Fires big projectiles"
 model_scene = ExtResource("1_hpjnt")
+starting_weapon = ExtResource("3_4jmj2")
 metadata/_custom_type_script = "uid://c5tgwkwpt6p3j"
