@@ -7,6 +7,7 @@ extends CanvasLayer
 @onready var passive_row: HBoxContainer = $Root/Slots/VBox/PassiveRow
 @onready var exp_bar: ProgressBar = $Root/ExpBar
 @onready var level_label: Label = $Root/LevelLabel
+var _slots: Dictionary = {}  # card -> slot, so a level-up updates the same slot
 
 
 func _ready() -> void:
@@ -24,8 +25,9 @@ func _ready() -> void:
 	_on_leveled_up(xp.level)
 
 	# Show what the player already carries (e.g. the starting weapon).
-	for card in (player as Player).weapons:
-		add_item(card)
+	for card in (player as Player).items:
+		add_item(card, (player as Player).items[card])
+	(player as Player).item_changed.connect(add_item)
 
 
 func _fill_row(row: HBoxContainer) -> void:
@@ -42,10 +44,17 @@ func _on_leveled_up(new_level: int) -> void:
 	level_label.text = "Level %d" % new_level
 	
 	
-func add_item(card: CardData) -> void:
-	var row := weapon_row if card.kind == CardData.Kind.WEAPON else passive_row
-	for slot in row.get_children():
-		var icon := slot.get_node("Icon") as TextureRect
-		if icon.texture == null:
-			icon.texture = card.icon
-			return
+func add_item(card: CardData, level: int) -> void:
+	var slot: Node = _slots.get(card)
+	if slot == null:
+		# New item: use the first empty slot of its row.
+		var row := weapon_row if card.kind == CardData.Kind.WEAPON else passive_row
+		for s in row.get_children():
+			if (s.get_node("Icon") as TextureRect).texture == null:
+				slot = s
+				break
+		if slot == null:
+			return  # no free slot
+		(slot.get_node("Icon") as TextureRect).texture = card.icon
+		_slots[card] = slot
+	(slot.get_node("LevelLabel") as Label).text = "Lv.%d" % level

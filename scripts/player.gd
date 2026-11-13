@@ -1,5 +1,6 @@
 extends CharacterBody3D
 class_name Player
+signal item_changed(card: CardData, level: int)
 
 @export var move_speed := 5.0
 @export var jump_velocity := 6.0
@@ -13,8 +14,10 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var health: Health = $Health
 
 var is_dead := false
-# Weapons the player currently has (cards), so the HUD and level-ups know about them.
-var weapons: Array[CardData] = []
+# Everything the player owns: card -> current level.
+var items: Dictionary = {}
+# Spawned weapon nodes, so a level-up can update the weapon that already exists.
+var _weapon_nodes: Dictionary = {}
 
 
 func _ready() -> void:
@@ -27,14 +30,43 @@ func _ready() -> void:
 		# Fallback so the game scene also works when run directly.
 		data = load("res://data/characters/cube.tres") as CharacterData
 	model_pivot.add_child(data.model_scene.instantiate())
-	equip_weapon(data.starting_weapon)
+	gain_card(data.starting_weapon)
 	
-func equip_weapon(card: CardData) -> void:
-	if card == null or card.weapon_scene == null:
-		return  # this class has no weapon (yet)
-	weapons.append(card)
-	# weapon.gd looks at get_parent() as Player, so it must be a direct child.
-	add_child(card.weapon_scene.instantiate())
+func get_item_level(card: CardData) -> int:
+	return items.get(card, 0)
+	
+# Total damage bonus from all passives (0.05 = +5%). Weapons read this when they fire.
+func get_damage_bonus() -> float:
+	var total := 0.0
+	for card in items:
+		if card.kind != CardData.Kind.PASSIVE:
+			continue
+		if card.base_bonus:
+			total += card.base_bonus.damage_bonus
+		for i in items[card] - 1:
+			total += card.levels[i].damage_bonus
+	return total
+
+
+# Gain a card: Lv.1 if new, otherwise one level higher (until its max level).
+func gain_card(card: CardData) -> void:
+	if card == null:
+		return
+	var level := get_item_level(card) + 1
+	if level > card.max_level:
+		return
+	items[card] = level
+
+	if card.kind == CardData.Kind.WEAPON:
+		# weapon.gd looks at get_parent() as Player, so it must be a direct child.
+		if level == 1 and card.weapon_scene:
+			var new_weapon := card.weapon_scene.instantiate()
+			add_child(new_weapon)
+			_weapon_nodes[card] = new_weapon
+		var weapon = _weapon_nodes.get(card)
+		if weapon:
+			weapon.apply_level(card, level)
+	item_changed.emit(card, level)
 	
 func _on_health_changed(current: float, maximum: float) -> void:
 	print("Player HP: %d / %d" % [current, maximum])

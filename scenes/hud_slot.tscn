@@ -10,3 +10,10 @@ texture_filter = 1
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
+
+[node name="LevelLabel" type="Label" parent="." unique_id=1269700779]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 2
+vertical_alignment = 2

@@ -3,23 +3,17 @@
 [ext_resource type="Script" uid="uid://dm128hjowb674" path="res://scripts/level_up_panel.gd" id="1_fxc03"]
 [ext_resource type="PackedScene" uid="uid://blmqx3tjhxnew" path="res://scenes/card_button.tscn" id="2_e300r"]
 [ext_resource type="Script" uid="uid://dw20crcqtifyb" path="res://scripts/card_data.gd" id="3_7h74h"]
-[ext_resource type="Resource" uid="uid://drsnc1gei3vdh" path="res://data/cards/test_passive_a.tres" id="4_culkk"]
-[ext_resource type="Resource" uid="uid://bc8ytt2ru56s6" path="res://data/cards/test_passive_b.tres" id="5_dnvp2"]
-[ext_resource type="Resource" uid="uid://ymmc4xip7gsd" path="res://data/cards/test_passive_c.tres" id="6_pet28"]
-[ext_resource type="Resource" uid="uid://bo3y13njqd66f" path="res://data/cards/test_passive_d.tres" id="7_haee8"]
-[ext_resource type="Resource" uid="uid://dsl2o1bqdn7fk" path="res://data/cards/test_passive_e.tres" id="8_kw4sq"]
-[ext_resource type="Resource" uid="uid://bi2580rhc5ka1" path="res://data/cards/test_weapon_a.tres" id="9_ekp0d"]
-[ext_resource type="Resource" uid="uid://bbb05abesmw1h" path="res://data/cards/test_weapon_b.tres" id="10_5avs8"]
-[ext_resource type="Resource" uid="uid://dxua1mgm5s4w" path="res://data/cards/test_weapon_c.tres" id="11_45a0s"]
-[ext_resource type="Resource" uid="uid://dwsqeibjqra7t" path="res://data/cards/test_weapon_d.tres" id="12_sp5ot"]
 [ext_resource type="Resource" uid="uid://byxtyq7i1iyhe" path="res://data/cards/test_weapon_e.tres" id="13_j0wtv"]
+[ext_resource type="Resource" uid="uid://cdk7uiegdty0d" path="res://data/cards/weapon_a.tres" id="14_dnvp2"]
+[ext_resource type="Resource" uid="uid://dj8wgpaqk0tnx" path="res://data/cards/weapon_b.tres" id="15_haee8"]
+[ext_resource type="Resource" uid="uid://cvuwqhblendac" path="res://data/cards/passive_a.tres" id="15_pet28"]
 
 [node name="LevelUpPanel" type="CanvasLayer" unique_id=188613578]
 process_mode = 3
 layer = 10
 script = ExtResource("1_fxc03")
 card_scene = ExtResource("2_e300r")
-card_pool = Array[ExtResource("3_7h74h")]([ExtResource("4_culkk"), ExtResource("5_dnvp2"), ExtResource("6_pet28"), ExtResource("7_haee8"), ExtResource("8_kw4sq"), ExtResource("9_ekp0d"), ExtResource("10_5avs8"), ExtResource("11_45a0s"), ExtResource("12_sp5ot"), ExtResource("13_j0wtv")])
+card_pool = Array[ExtResource("3_7h74h")]([ExtResource("13_j0wtv"), ExtResource("14_dnvp2"), ExtResource("15_haee8"), ExtResource("15_pet28")])
 
 [node name="Root" type="Control" parent="." unique_id=245339998]
 layout_mode = 3
@@ -50,3 +44,19 @@ grow_vertical = 2
 [node name="Cards" type="HBoxContainer" parent="Root/Center" unique_id=1408380922]
 layout_mode = 2
 theme_override_constants/separation = 24
+
+[node name="Hint" type="Label" parent="Root" unique_id=1122502755]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -120.5
+offset_top = -131.0
+offset_right = 120.5
+offset_bottom = -108.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Press 1 / 2 / 3 or click to choose"

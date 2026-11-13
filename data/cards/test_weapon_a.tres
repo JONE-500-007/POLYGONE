@@ -2,10 +2,46 @@
 
 [ext_resource type="Texture2D" uid="uid://duu2ejcsyiv4q" path="res://weapon_icon/cube_01_weapon.png" id="1_0yqwu"]
 [ext_resource type="Script" uid="uid://dw20crcqtifyb" path="res://scripts/card_data.gd" id="1_6o1qe"]
+[ext_resource type="Script" uid="uid://35623x45aaba" path="res://scripts/card_level.gd" id="2_5pahi"]
+[ext_resource type="PackedScene" uid="uid://cs77fepf0xeql" path="res://scenes/weapon_cube.tscn" id="3_rfgxs"]
+
+[sub_resource type="Resource" id="Resource_culkk"]
+script = ExtResource("2_5pahi")
+description = "+1 Projectile
++5% Damage"
+damage_bonus = 0.05
+projectile_bonus = 1
+metadata/_custom_type_script = "uid://35623x45aaba"
+
+[sub_resource type="Resource" id="Resource_vwubb"]
+script = ExtResource("2_5pahi")
+description = "+1 Projectile
++5% Damage
+10% Fire rate"
+damage_bonus = 0.05
+fire_rate_bonus = 0.1
+projectile_bonus = 1
+metadata/_custom_type_script = "uid://35623x45aaba"
+
+[sub_resource type="Resource" id="Resource_5pahi"]
+script = ExtResource("2_5pahi")
+description = "20% Fire rate
++2 Projectile"
+fire_rate_bonus = 0.2
+projectile_bonus = 2
+metadata/_custom_type_script = "uid://35623x45aaba"
+
+[sub_resource type="Resource" id="Resource_xv1cl"]
+script = ExtResource("2_5pahi")
+description = "+15% Damage"
+damage_bonus = 0.15
+metadata/_custom_type_script = "uid://35623x45aaba"
 
 [resource]
 script = ExtResource("1_6o1qe")
 display_name = "Test Weapon A"
 description = "this for test weapon A"
 icon = ExtResource("1_0yqwu")
+weapon_scene = ExtResource("3_rfgxs")
+levels = Array[ExtResource("2_5pahi")]([SubResource("Resource_culkk"), SubResource("Resource_vwubb"), SubResource("Resource_5pahi"), SubResource("Resource_xv1cl")])
 metadata/_custom_type_script = "uid://dw20crcqtifyb"

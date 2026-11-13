@@ -7,19 +7,18 @@ extends CanvasLayer
 @onready var root: Control = $Root
 @onready var cards_box: HBoxContainer = $Root/Center/Cards
 
-var _available: Array = []
 var _shown: Array = []
 var _pending := 0
 var _open := false
+var _player: Player
 
 
 func _ready() -> void:
-	_available = card_pool.duplicate()
 	root.hide()
-	var player := get_tree().get_first_node_in_group("player")
-	if player == null:
+	_player = get_tree().get_first_node_in_group("player") as Player
+	if _player == null:
 		return
-	var xp := player.get_node("Experience") as Experience
+	var xp := _player.get_node("Experience") as Experience
 	xp.leveled_up.connect(_on_leveled_up)
 
 
@@ -30,13 +29,16 @@ func _on_leveled_up(_level: int) -> void:
 
 
 func _show_next() -> void:
-	if _pending <= 0 or _available.is_empty():
+	# Offer only items that are not at max level yet.
+	var candidates: Array = card_pool.filter(
+		func(c: CardData) -> bool: return _player.get_item_level(c) < c.max_level)
+	if _pending <= 0 or candidates.is_empty():
 		_close()
 		return
 	_pending -= 1
 	_open = true
-	_available.shuffle()
-	_shown = _available.slice(0, choices)
+	candidates.shuffle()
+	_shown = candidates.slice(0, choices)
 
 	for old in cards_box.get_children():
 		cards_box.remove_child(old)
@@ -44,7 +46,7 @@ func _show_next() -> void:
 	for i in _shown.size():
 		var button := card_scene.instantiate()
 		cards_box.add_child(button)
-		button.setup(_shown[i], i + 1)
+		button.setup(_shown[i], i + 1, _player.get_item_level(_shown[i]) + 1)
 		button.pressed.connect(_pick.bind(i))
 
 	root.show()
@@ -65,11 +67,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _pick(index: int) -> void:
 	var card: CardData = _shown[index]
-	_available.erase(card)
 	print("Picked: ", card.display_name)
-	var hud := get_tree().get_first_node_in_group("hud")
-	if hud:
-		hud.add_item(card)
+	_player.gain_card(card)  # new item or level-up; the HUD hears the signal
 	_show_next()  # next queued level-up, or close if none
 
 

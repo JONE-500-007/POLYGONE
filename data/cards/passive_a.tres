@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://cvuwqhblendac"]
+
+[ext_resource type="Texture2D" uid="uid://5klayfd1yj2w" path="res://passive_icon/cube_01_passive.png" id="1_m58a6"]
+[ext_resource type="Script" uid="uid://35623x45aaba" path="res://scripts/card_level.gd" id="2_hedui"]
+[ext_resource type="Script" uid="uid://dw20crcqtifyb" path="res://scripts/card_data.gd" id="3_xvqcd"]
+
+[sub_resource type="Resource" id="Resource_jqrio"]
+script = ExtResource("2_hedui")
+description = "+5% weapon damage"
+damage_bonus = 0.05
+metadata/_custom_type_script = "uid://35623x45aaba"
+
+[sub_resource type="Resource" id="Resource_m58a6"]
+script = ExtResource("2_hedui")
+description = "+5% weapon damage"
+damage_bonus = 0.05
+metadata/_custom_type_script = "uid://35623x45aaba"
+
+[sub_resource type="Resource" id="Resource_hedui"]
+script = ExtResource("2_hedui")
+description = "+10% weapon damage"
+damage_bonus = 0.1
+metadata/_custom_type_script = "uid://35623x45aaba"
+
+[sub_resource type="Resource" id="Resource_xvqcd"]
+script = ExtResource("2_hedui")
+description = "+10% weapon damage"
+damage_bonus = 0.1
+metadata/_custom_type_script = "uid://35623x45aaba"
+
+[sub_resource type="Resource" id="Resource_5huqi"]
+script = ExtResource("2_hedui")
+description = "+15% weapon damage"
+damage_bonus = 0.15
+metadata/_custom_type_script = "uid://35623x45aaba"
+
+[resource]
+script = ExtResource("3_xvqcd")
+display_name = "Passive A"
+description = "+5% weapon damage"
+icon = ExtResource("1_m58a6")
+kind = 1
+base_bonus = SubResource("Resource_jqrio")
+levels = Array[ExtResource("2_hedui")]([SubResource("Resource_m58a6"), SubResource("Resource_hedui"), SubResource("Resource_xvqcd"), SubResource("Resource_5huqi")])
+metadata/_custom_type_script = "uid://dw20crcqtifyb"
