@@ -14,12 +14,16 @@ var _player: Player
 
 
 func _ready() -> void:
+	add_to_group("level_up")
 	root.hide()
 	_player = get_tree().get_first_node_in_group("player") as Player
 	if _player == null:
 		return
 	var xp := _player.get_node("Experience") as Experience
 	xp.leveled_up.connect(_on_leveled_up)
+	
+func is_open() -> bool:
+	return _open
 
 
 func _on_leveled_up(_level: int) -> void:

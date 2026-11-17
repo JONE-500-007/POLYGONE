@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://qg10x5ak28us"]
+
+[ext_resource type="Script" uid="uid://cutaboqhhlj3i" path="res://scripts/pause_menu.gd" id="1_n87rw"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1726852431]
+process_mode = 3
+layer = 30
+script = ExtResource("1_n87rw")
+
+[node name="Root" type="Control" parent="." unique_id=645806746]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="Root" unique_id=489095197]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.60784316)
+
+[node name="Center" type="CenterContainer" parent="Root" unique_id=1203036633]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Buttons" type="VBoxContainer" parent="Root/Center" unique_id=1060533854]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="ReturntoGameButton" type="Button" parent="Root/Center/Buttons" unique_id=1905717181]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+text = "Return To Game"
+
+[node name="SettingsButton" type="Button" parent="Root/Center/Buttons" unique_id=1700170576]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+text = "Settings"
+
+[node name="MainMenuButton" type="Button" parent="Root/Center/Buttons" unique_id=73035209]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+text = "Back To Main Menu"
+
+[node name="QuitButton" type="Button" parent="Root/Center/Buttons" unique_id=1176875820]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+text = "Quit Game"
